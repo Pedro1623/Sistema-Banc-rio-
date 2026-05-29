@@ -21,8 +21,8 @@ while True:
         # O python vai gerar um código aleatório
         codigo = random.randint(100000, 999999)
 
-        email_remetente = "pedrolopesoliveira8@gmail.com" # O email de quem manda
-        senha_app = "kakf nwtk qlnu dmdx" # A senha do email do remetente
+        email_remetente = "SEU_EMAIL@gmail.com" # O email de quem manda
+        senha_app = "SUASENHADEAPP" # A senha do email do remetente
 
         email_destino = email # O email de quem vai receber o email do remetente
 
