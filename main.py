@@ -12,17 +12,25 @@ while True:
     opcoes = int(input("Escolha uma opção:\n 1 - Criar conta\n 2 - Depositar\n 3 - Sacar\n 4 - Sair\n"))
 
     if opcoes == 1:
-        nome = str(input("Qual o seu nome?\n"))
-        idade = int(input("Qual a sua idade?\n"))
-        endereco = str(input("Qual o seu endereço?\n"))
-        telefone = int(input("Qual o número do seu telefone?\n"))
-        email = str(input("Qual o seu e-mail?\n"))
+        try:
+            nome = str(input("Qual o seu nome?\n"))
+            idade = int(input("Qual a sua idade?\n"))
+            endereco = str(input("Qual o seu endereço?\n"))
+            telefone = int(input("Qual o número do seu telefone?\n"))
+            email = str(input("Qual o seu e-mail?\n"))
+
+        except ValueError:
+            print("Por favor, informe seus dados corretamente!")
+            continue
+
+        if idade < 18:
+            raise("Apenas maiores de 18 anos podem abrir uma conta neste banco.")
 
         # O python vai gerar um código aleatório
         codigo = random.randint(100000, 999999)
 
-        email_remetente = "pedrolopesoliveira8@gmail.com" # O email de quem manda
-        senha_app = "kakf nwtk qlnu dmdx" # A senha do email do remetente
+        email_remetente = "SEU EMAIL" # O email de quem manda
+        senha_app = "SUA SENHA DE APP" # A senha do email do remetente
 
         email_destino = email # O email de quem vai receber o email do remetente
 
@@ -60,15 +68,24 @@ while True:
         if nova_conta is None:
             print("\nVocê precisa criar uma conta antes de depositar!\n")
 
-        deposito = float(input("Qual o valor do deposito?\n"))
-        nova_conta.depositar(deposito)
+        try:
+            deposito = float(input("Qual o valor do deposito?\n"))
+            nova_conta.depositar(deposito)
+
+        except ValueError:
+            print("Por favor, informe o valor do deposito de forma numerica!")
+            sys.exit() # Fecha todo o programa
 
     elif opcoes == 3:
         if nova_conta is None:
-            print("\nVocê precisa criar uma conta antes de depositar!\n")
-            
-        saque = float(input("Qual o valor do saque?\n"))
-        nova_conta.sacar((saque))
+            print("\nVocê precisa criar uma conta antes de sacar!\n")
+
+        try: 
+            saque = float(input("Qual o valor do saque?\n"))
+            nova_conta.sacar((saque))
+
+        except ValueError:
+            print("Por favor, informe o valor do saque de forma numerica!")
     
     elif opcoes == 4:
         sys.exit() # Fecha todo o programa
