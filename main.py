@@ -9,7 +9,7 @@ nova_conta = None
 while True:
     print("=== BANCO PYTHON ===\n")
 
-    opcoes = int(input("Escolha uma opção:\n 1 - Criar conta\n 2 - Depositar\n 3 - Sacar\n 4 - Sair\n"))
+    opcoes = int(input("Escolha uma opção:\n 1 - Criar conta\n 2 - Depositar\n 3 - Sacar\n 4 - Extrato 5 - Sair\n"))
 
     if opcoes == 1:
         try:
@@ -86,10 +86,16 @@ while True:
 
         except ValueError:
             print("Por favor, informe o valor do saque de forma numerica!")
-    
+
     elif opcoes == 4:
+        if nova_conta is None:
+            print("\nVocê precisa criar uma conta antes de ver o extrato!\n")
+        else:
+            nova_conta.extrato()
+    
+    elif opcoes == 5:
         sys.exit() # Fecha todo o programa
 
     else:
-        print("Escolha uma das 4 opções")
+        print("Escolha uma das 5 opções")
         continue

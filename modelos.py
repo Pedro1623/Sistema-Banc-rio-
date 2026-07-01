@@ -7,6 +7,7 @@ class Conta_Bancária:
         self.telefone = telefone
         self.email = email
         self.saldo = saldo_inicial
+        self.historico = []
     
     def depositar(self, valor):
         if valor > 0:
@@ -14,6 +15,8 @@ class Conta_Bancária:
 
             print(f"O seu deposito de {valor:.2f} reais foi concluído com sucesso \n")
             print(f"Saldo Atual: {self.saldo:.2f}")
+
+            self.historico.append(f"Depósito: R${valor:.2f}")
 
         else:
             print(f"Não foi possível realizar est deposito")
@@ -28,3 +31,14 @@ class Conta_Bancária:
         else:
             self.saldo -= valor
             print(f"Saque de {valor:.2f} reais realizado com sucesso")
+
+            self.historico.append(f"Saque: R${valor:.2f}")
+
+    def extrato(self):
+        if not self.historico:
+            print("Nenhuma movimentação realizada ainda.")
+        else:
+            for item in self.historico:
+                print(item)
+
+        print(f"Saldo Atual: R${self.saldo:.2f}")
